@@ -11,7 +11,7 @@ import os, shutil, random
 
 full_data_path = 'data/obj/'
 extension_allowed = '.jpg'
-split_percentage = 90
+split_percentage = 80
 
 images_path = 'data/images/'
 if os.path.exists(images_path):
