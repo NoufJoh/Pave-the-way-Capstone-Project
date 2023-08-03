@@ -1,76 +1,71 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jul 31 10:49:53 2023
+Created on Thu Aug 3 2023
 
-@author: nuf
+@author: NoufJOH
 """
 
-import os, shutil, random
+import os
+import random
+from shutil import copyfile
 
-# preparing the folder structure
+# train, valid, test
 
-full_data_path = 'data/obj/'
-extension_allowed = '.jpg'
-split_percentage = 80
+def split_data(data_dir, output_dir, split=(0.7, 0.1, 0.2)):
+    # Create the output directories if they don't exist
+    train_dir = os.path.join(output_dir, 'train')
+    test_dir = os.path.join(output_dir, 'test')
+    valid_dir = os.path.join(output_dir, 'valid')
+    for d in [train_dir, test_dir, valid_dir]:
+        os.makedirs(os.path.join(d, 'images'), exist_ok=True)
+        os.makedirs(os.path.join(d, 'labels'), exist_ok=True)
 
-images_path = 'data/images/'
-if os.path.exists(images_path):
-    shutil.rmtree(images_path)
-os.mkdir(images_path)
-    
-labels_path = 'data/labels/'
-if os.path.exists(labels_path):
-    shutil.rmtree(labels_path)
-os.mkdir(labels_path)
-    
-training_images_path = images_path + 'training/'
-validation_images_path = images_path + 'validation/'
-training_labels_path = labels_path + 'training/'
-validation_labels_path = labels_path +'validation/'
-    
-os.mkdir(training_images_path)
-os.mkdir(validation_images_path)
-os.mkdir(training_labels_path)
-os.mkdir(validation_labels_path)
+    # Get all image and label file paths
+    img_paths = [os.path.join(data_dir, f) for f in os.listdir(data_dir) if f.endswith('.jpg')]
+    txt_paths = [os.path.join(data_dir, f) for f in os.listdir(data_dir) if f.endswith('.txt')]
 
-files = []
+    # Extract the class labels from the file names
+    labels = [0 if 'verypoor' in f else 1 for f in img_paths]
 
-ext_len = len(extension_allowed)
+    # Shuffle the data while preserving the class distribution (making sure the split is balanced)
+    data = list(zip(img_paths, txt_paths, labels))
+    random.shuffle(data) # shuffle data
+    img_paths, txt_paths, labels = zip(*data)
 
-for r, d, f in os.walk(full_data_path):
-    for file in f:
-        if file.endswith(extension_allowed):
-            strip = file[0:len(file) - ext_len]      
-            files.append(strip)
+    # Split the data into train, validation, and test sets using stratified sampling
+    n_train = int(len(img_paths) * split[0])
+    n_valid = int(len(img_paths) * split[1])
+    train_img_paths = img_paths[:n_train]
+    train_txt_paths = txt_paths[:n_train]
+    valid_img_paths = img_paths[n_train:n_train+n_valid]
+    valid_txt_paths = txt_paths[n_train:n_train+n_valid]
+    test_img_paths = img_paths[n_train+n_valid:]
+    test_txt_paths = txt_paths[n_train+n_valid:]
 
-random.shuffle(files)
+    # Copy the files to the output directories
+    print("Copying training data")
+    for src_img, src_txt in zip(train_img_paths, train_txt_paths):
+        dst_img = os.path.join(train_dir, 'images', os.path.basename(src_img))
+        dst_txt = os.path.join(train_dir, 'labels', os.path.basename(src_txt))
+        copyfile(src_img, dst_img)
+        copyfile(src_txt, dst_txt)
+        
+    print("copying validation data")
+    for src_img, src_txt in zip(valid_img_paths, valid_txt_paths):
+        dst_img = os.path.join(valid_dir, 'images', os.path.basename(src_img))
+        dst_txt = os.path.join(valid_dir, 'labels', os.path.basename(src_txt))
+        copyfile(src_img, dst_img)
+        copyfile(src_txt, dst_txt)
+        
+    print("copying testing data")    
+    for src_img, src_txt in zip(test_img_paths, test_txt_paths):
+        dst_img = os.path.join(test_dir, 'images', os.path.basename(src_img))
+        dst_txt = os.path.join(test_dir, 'labels', os.path.basename(src_txt))
+        copyfile(src_img, dst_img)
+        copyfile(src_txt, dst_txt)
 
-size = len(files)                   
-
-split = int(split_percentage * size / 100)
-
-print("copying training data")
-for i in range(split):
-    strip = files[i]
-                         
-    image_file = strip + extension_allowed
-    src_image = full_data_path + image_file
-    shutil.copy(src_image, training_images_path) 
-                         
-    annotation_file = strip + '.txt'
-    src_label = full_data_path + annotation_file
-    shutil.copy(src_label, training_labels_path) 
-
-print("copying validation data")
-for i in range(split, size):
-    strip = files[i]
-                         
-    image_file = strip + extension_allowed
-    src_image = full_data_path + image_file
-    shutil.copy(src_image, validation_images_path) 
-                         
-    annotation_file = strip + '.txt'
-    src_label = full_data_path + annotation_file
-    shutil.copy(src_label, validation_labels_path) 
-
-print("finished")
+# split the data
+data_dir = './data_annote'
+output_dir = './op'
+split_data(data_dir, output_dir)
+print('Finshed!')
