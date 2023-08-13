@@ -1,6 +1,6 @@
-train: /content/pave-the-way-Capstone-Project/data/split_data/train/images/
-val: /content/pave-the-way-Capstone-Project/data/split_data/valid/images/
-test: /content/pave-the-way-Capstone-Project/data/split_data/test/images/
+train: /content/pave-the-way-Capstone-Project/data/op/train/images/
+val: /content/pave-the-way-Capstone-Project/data/op/valid/images/
+test: /content/pave-the-way-Capstone-Project/data/op/test/images/
 
 # number of classes
 nc: 2
