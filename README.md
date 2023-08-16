@@ -13,8 +13,6 @@
     
   </a>
 
-  <h3 align="center">Capstone Project</h3>
-
   <p align="center">
     This capstone project is to fulfill the graduation requirements of Samsung Innovation Campus - Immersive with MISK Skills.
   </p>
@@ -44,15 +42,15 @@
   </a>
 </div>
 <br />
-In this exciting project, we developed an automated road damage detection model that leverages state-of-the-art technology to analyze images of roads. Our model is specifically designed to accurately detect and classify various types of road damage, such as cracks and potholes, into two categories: poor, or very poor. This enables immediate reporting and facilitates prompt maintenance actions, ultimately enhancing road safety, optimizing resource allocation, and providing valuable insights for data-driven decision-making in road infrastructure management.
-
-Our team worked tirelessly to preprocess and annotate the images used to train the model. We used the powerful YOLOv8 algorithm to train three different model types: Yolov8n, Yolov8m, and Yolov8l, and carefully evaluated their performance to select the best one. The chosen model was then deployed on a user-friendly webpage that allows users to easily upload an image of the road and receive an instant classification of its condition as either "poor" or "very poor," depending on the extent of the damage, if any, detected.
 
 **Let's Pave the Way to safer journeys together!**
+<br />
+In this exciting project, we developed an automated road damage detection model that leverages state-of-the-art technology to analyze images of roads. Our model is specifically designed to accurately detect and classify various types of road damage, such as cracks and potholes, into two categories: poor, or very poor. This enables immediate reporting and facilitates prompt maintenance actions, ultimately enhancing road safety, optimizing resource allocation, and providing valuable insights for data-driven decision-making in road infrastructure management.
 
- `Data-Science-Campus-Capstone-Project`, `Object-Dectection`,`Yolov8`,`road-damages`, `pothole`, `cracks`, `AI-Capstone-Project`
+Our team worked tirelessly to preprocess and annotate the images used to train the model. We used the powerful YOLOv8 algorithm to train three different model types: Yolov8n, Yolov8m, and Yolov8l, and carefully evaluated their performance to select the best one. The chosen model was then deployed [Here](https://github.com/NoufJoh/try/) on a user-friendly webpage that allows users to easily upload an image of the road and receive an instant classification of its condition as either "poor" or "very poor," depending on the extent of the damage, if any, detected. 
 
 
+ `Data-Science-Campus-Capstone-Project`, `Object-Dectection`,`Yolov8`,`road-damage`, `pothole`, `cracks`, `AI-Capstone-Project`
 
 
 
@@ -67,7 +65,7 @@ Our team worked tirelessly to preprocess and annotate the images used to train t
 * Seaborn;
 * [OpenCV](https://pypi.org/project/opencv-python/)
 * [YOLOv8](https://github.com/ultralytics/ultralytics)
-* [ONNX](https://github.com/onnx/onnx)
+* [ONNX runtime](https://github.com/microsoft/onnxruntime)
 
 
 
@@ -95,8 +93,7 @@ Before using the jupyter notebook, ensure to install all the libraries stored in
    * 1. YOLOv8m (Medium Model) -- containing two trials
      2. YOLOv8l (Large Model) - containing four trials
      3. YOLOv8n (Nano Model) - containing 7 trials.
-     4. Best Model - containing the best models of a,b, and c, to choose the best model overall to deply the project [Here](https://github.com/NoufJoh/try/)
-
+     4. Best Model - containing the best models of a,b, and c, to choose the best model overall to deply.
 
 
 
