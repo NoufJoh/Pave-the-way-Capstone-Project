@@ -87,12 +87,12 @@ Before using the jupyter notebook, ensure to install all the libraries stored in
    ```sh
    git clone https://github.com/NoufJoh/pave-the-way-Capstone-Project.git
    ```
-3. Open the part-one Jupyter notebook for data preprocessing and exploratory data analysis (EDA), this includes annotations (split_data.py)
+3. Open the part-one Jupyter notebook for data preprocessing and exploratory data analysis (EDA), this includes annotations.
 
 4. Open the part-two Jupyter notebooks for machine-learning model training and evaluations (this contains 4 notebooks)
-   * 1. YOLOv8m (Medium Model) -- containing two trials
-     2. YOLOv8l (Large Model) - containing four trials
-     3. YOLOv8n (Nano Model) - containing 7 trials.
+   * 1. YOLOv8m (Medium Model) -- containing two trials ---> model 1 is the best model
+     2. YOLOv8l (Large Model) - containing four trials ---> model 2 is the best model
+     3. YOLOv8n (Nano Model) - containing 7 trials ---> model 1 is the best model
      4. Best Model - containing the best models of a,b, and c, to choose the best model overall to deply.
 
 
@@ -109,9 +109,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 * NOUF ALJOHANI - [Linkedin](https://www.linkedin.com/in/nouf-aljohani-3785191b3/)
 * Nada Alghamdi - [Linkedin](www.linkedin.com/in/nada--alghamdi)
-* Noura Alluhaidan [Linkedin]()
+* Noura Alluhaidan [Linkedin](https://www.linkedin.com/in/noura-alluhaidan-84890023b)
 * Haya Albaqami  - [Linkedin](https://www.linkedin.com/in/haya-albaqami-97b91823a)
-* Reem Almubark - [Linkedin]()
+* Reem Almubark - [Linkedin](https://www.linkedin.com/in/reemalmubarak)
 * Mai Albqami - [Linkedin](https://www.linkedin.com/in/may-albogami-1509a11a4)
 
 —
